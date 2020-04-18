@@ -34,12 +34,27 @@
 
 class Solution:
     def maximum69Number (self, num: int) -> int:
-        number_str = str(num)
+        num_string = str(num)
+        string_length = len(num_string)
         
-        idx = 0
-        for number in number_str:
-            if number == "6":
-                new_string = number_str[:idx] + "9" + number_str[idx+1:]
-                return int(new_string)
+        for idx in range(0,string_length):
+            if num_string[idx] == "6":
+                power = (string_length - idx - 1)
+                num = num + (3*(10**power))
+                return num
             idx += 1
         return num
+
+
+# ANOTHER SOLUTION
+# class Solution:
+#     def maximum69Number (self, num: int) -> int:
+#         number_str = str(num)
+        
+#         idx = 0
+#         for number in number_str:
+#             if number == "6":
+#                 new_string = number_str[:idx] + "9" + number_str[idx+1:]
+#                 return int(new_string)
+#             idx += 1
+#         return num

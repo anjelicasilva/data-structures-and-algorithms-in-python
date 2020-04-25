@@ -34,19 +34,39 @@
 #     Can you solve it in O(N) time and O(1) space?
 
 
-class Solution:
+# class Solution:
     
-    def create_new_string(self, string):
-            new_string_lst = []
-            for letter in string:
-                if letter != '#':
-                    new_string_lst.append(letter)
-                elif new_string_lst == []:
-                    continue
-                elif new_string_lst:
-                    new_string_lst.pop()
-            return "".join(new_string_lst)
+#     def create_new_string(self, string):
+#             new_string_lst = []
+#             for letter in string:
+#                 if letter != '#':
+#                     new_string_lst.append(letter)
+#                 elif new_string_lst == []:
+#                     continue
+#                 elif new_string_lst:
+#                     new_string_lst.pop()
+#             return "".join(new_string_lst)
     
-    def backspaceCompare(self, S: str, T: str) -> bool:  
+#     def backspaceCompare(self, S: str, T: str) -> bool:  
 
-        return self.create_new_string(S) == self.create_new_string(T)
+#         return self.create_new_string(S) == self.create_new_string(T)
+
+
+
+# Another Solution
+def create_stack(string):
+    new_stack = []
+    for char in string:
+        if char == "#" and new_stack:
+            new_stack.pop()
+        elif char == "#":
+            continue
+        else:
+            new_stack.append(char)
+    return new_stack
+
+class Solution:
+    def backspaceCompare(self, S: str, T: str) -> bool:
+        s_stack = create_stack(S)
+        t_stack = create_stack(T)
+        return s_stack == t_stack

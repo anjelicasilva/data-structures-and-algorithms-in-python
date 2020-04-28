@@ -26,3 +26,13 @@
 # Constraints:
 #     1 <= nums.length <= 500
 #     1 <= nums[i] <= 10^5
+
+
+class Solution:
+    def findNumbers(self, nums: List[int]) -> int:
+        evens = 0
+        for number in nums:
+            num_str = str(number)
+            if len(num_str) % 2 == 0:
+                evens += 1
+        return evens

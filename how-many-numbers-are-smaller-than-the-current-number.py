@@ -26,15 +26,25 @@
 #     2 <= nums.length <= 500
 #     0 <= nums[i] <= 100
 
+# class Solution:
+#     def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+#         idx = 0
+#         smaller_num_count = []
+#         while idx < len(nums):
+#             count = 0
+#             for i, number in enumerate(nums):
+#                 if number < nums[idx] and i != idx:
+#                     count += 1
+#             smaller_num_count.append(count)
+#             idx += 1
+#         return smaller_num_count
+
+#Another Solution:
+
 class Solution:
     def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
-        idx = 0
-        smaller_num_count = []
-        while idx < len(nums):
-            count = 0
-            for i, number in enumerate(nums):
-                if number < nums[idx] and i != idx:
-                    count += 1
-            smaller_num_count.append(count)
-            idx += 1
-        return smaller_num_count
+        nums_sorted = sorted(nums)
+        result = [None] * len(nums)
+        for idx, num in enumerate(nums):
+            result[idx] = nums_sorted.index(num)
+        return result

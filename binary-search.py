@@ -24,3 +24,20 @@
 #     You may assume that all elements in nums are unique.
 #     n will be in the range [1, 10000].
 #     The value of each element in nums will be in the range [-9999, 9999].
+
+# My Attempt
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        left = 0
+        right = len(nums)-1
+        pivot = left + right // 2
+        
+        while left <= right:
+            if nums[pivot] == target:
+                return pivot
+            if nums[pivot] < target:
+                left = pivot + 1
+            else:
+                right = pivot - 1
+            pivot = left + (right - left) // 2
+        return -1
